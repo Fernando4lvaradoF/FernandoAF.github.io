@@ -1,0 +1,515 @@
+/* ==========================================================================
+   Root & Theme Tokens
+   ========================================================================== */
+
+:root {
+  /* Light mode palette */
+  --page-bg: #efede7;
+  --cv-bg: #f7f4ef;
+  --text-main: #171717;
+  --text-muted: #555150;
+  --accent: #1b1b1b;
+  --divider: rgba(27, 27, 27, 0.18);
+  --hairline: rgba(27, 27, 27, 0.08);
+  --chip-bg: rgba(23, 23, 23, 0.03);
+
+  --font-display: "Playfair Display", "Cormorant Garamond", "Times New Roman",
+    serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  --radius-soft: 14px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 26px 60px rgba(0, 0, 0, 0.08);
+
+  --transition-fast: 0.28s ease;
+}
+
+/* Dark theme overrides via data-theme attribute */
+html[data-theme="dark"] {
+  --page-bg: #050506;
+  --cv-bg: #050608;
+  --text-main: #f4f1ea;
+  --text-muted: #a9a3a0;
+  --accent: #f5f0e5;
+  --divider: rgba(244, 241, 234, 0.2);
+  --hairline: rgba(244, 241, 234, 0.08);
+  --chip-bg: rgba(244, 241, 234, 0.05);
+
+  --shadow-soft: 0 26px 80px rgba(0, 0, 0, 0.85);
+}
+
+/* ==========================================================================
+   Global Reset & Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--page-bg);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 40px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+a:hover,
+a:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+p {
+  margin: 0 0 0.5rem;
+}
+
+/* ==========================================================================
+   Page Layout
+   ========================================================================== */
+
+.page {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cv {
+  background-color: var(--cv-bg);
+  border-radius: var(--radius-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 40px 44px 40px;
+  border: 1px solid var(--hairline);
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px 10px 28px;
+  }
+
+  .cv {
+    padding: 24px 18px 24px;
+    border-radius: 16px;
+  }
+}
+
+/* ==========================================================================
+   Toolbar / Theme Toggle
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.toolbar-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme="dark"] .toolbar-inner {
+  background: rgba(10, 10, 12, 0.6);
+}
+
+.toolbar-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.theme-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-toggle-slider {
+  position: relative;
+  width: 42px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--hairline);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.theme-toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background-color: var(--cv-bg);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transform: translate(0, -50%);
+  transition: transform var(--transition-fast), background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.theme-toggle-text {
+  opacity: 0.8;
+}
+
+.theme-toggle-text--dark {
+  letter-spacing: 0.16em;
+}
+
+.theme-toggle input:checked + .theme-toggle-slider {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.theme-toggle input:checked + .theme-toggle-slider::before {
+  transform: translate(18px, -50%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 480px) {
+  .toolbar-inner {
+    padding: 5px 8px;
+  }
+
+  .theme-toggle-text:nth-child(1),
+  .theme-toggle-text--dark {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Header / Identity
+   ========================================================================== */
+
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 26px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.cv-header-primary {
+  flex: 2;
+}
+
+.cv-name {
+  font-family: var(--font-display);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.cv-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.cv-contact {
+  flex: 1.4;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+
+.cv-contact p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cv-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .cv-contact {
+    text-align: left;
+  }
+
+  .cv-name {
+    font-size: 22px;
+  }
+
+  .cv-title {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* ==========================================================================
+   Sections & Typography Hierarchy
+   ========================================================================== */
+
+.cv-section {
+  padding: 18px 0 14px;
+  border-top: 1px solid var(--hairline);
+}
+
+.cv-section:first-of-type {
+  border-top: 0;
+}
+
+.cv-section-header {
+  margin-bottom: 6px;
+}
+
+.cv-section-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+
+.cv-section-body {
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.cv-section-body > p {
+  max-width: 62ch;
+}
+
+.cv-grid-two {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 720px) {
+  .cv-grid-two {
+    grid-template-columns: 0.9fr 2.1fr;
+    column-gap: 38px;
+  }
+
+  .cv-section-header {
+    margin-bottom: 0;
+  }
+}
+
+/* ==========================================================================
+   Columns & Lists
+   ========================================================================== */
+
+.cv-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 32px;
+  row-gap: 10px;
+}
+
+.cv-columns--balanced {
+  align-items: flex-start;
+}
+
+.cv-list {
+  list-style-type: "— ";
+  padding-left: 1.15rem;
+  margin: 0;
+}
+
+.cv-list li {
+  margin-bottom: 3px;
+}
+
+@media (max-width: 640px) {
+  .cv-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ==========================================================================
+   Timeline Entries (Experience, Projects)
+   ========================================================================== */
+
+.cv-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cv-entry {
+  padding: 10px 0 6px;
+  border-top: 1px solid var(--hairline);
+}
+
+.cv-entry:first-child {
+  border-top: 0;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.cv-entry-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  margin: 0 0 2px;
+}
+
+.cv-entry-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cv-entry-meta--right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-entry-list {
+  list-style-type: "⁕ ";
+  padding-left: 1.2rem;
+  margin: 0;
+  font-size: 13px;
+}
+
+.cv-entry-list li {
+  margin-bottom: 3px;
+}
+
+@media (max-width: 720px) {
+  .cv-entry-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cv-entry-meta--right {
+    text-align: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* Compact entries (Education) */
+
+.cv-entry--compact {
+  padding: 6px 0;
+}
+
+.cv-entry-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Chips / Misc Styling
+   ========================================================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline);
+  background-color: var(--chip-bg);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  body {
+    background: #ffffff !important;
+    padding: 0;
+    display: block;
+  }
+
+  .page {
+    max-width: none;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .cv {
+    box-shadow: none !important;
+    border-radius: 0;
+    border: none;
+    padding: 24px 26px 24px;
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  a {
+    border-bottom: none;
+  }
+}
+
