@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gothic minimalist professional resume template" />
+  <title> CV FAF </title>
+
+  <!-- Google Fonts for gothic minimalist typography -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Page wrapper for central layout -->
+  <div class="page">
+    <!-- Theme toggle: Light / Dark -->
+    <header class="toolbar" aria-label="Theme selection">
+      <div class="toolbar-inner">
+        <span class="toolbar-label">Modo</span>
+        <label class="theme-toggle" for="theme-toggle-input">
+          <span class="theme-toggle-text">Light</span>
+          <input type="checkbox" id="theme-toggle-input" aria-label="Toggle dark mode" checked />
+          <span class="theme-toggle-slider" aria-hidden="true"></span>
+          <span class="theme-toggle-text theme-toggle-text--dark">Dark</span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Main CV container -->
+    <main class="cv" role="main">
+      <!-- Header / Identity section -->
+      <section class="cv-header" aria-labelledby="cv-name">
+        <div class="cv-header-primary">
+          <h1 id="cv-name" class="cv-name">Fernando Alvarado Flores</h1>
+          <p class="cv-title">Desarrollador web</p>
+        </div>
+
+        <div class="cv-contact">
+          <p>CDMX, México </p>
+          <p><a href="mailto:falvaradoflores3781@gmail.com">falvaradoflores3781@gmail.com</a> · 
+            <a href="https://wa.me/5559618779" target="_blank">
+          5559618779</a>
+      </p><a href="https://www.linkedin.com/in/fernando-af" target="_blank" rel="noopener">Linkedin.com/fernando-af</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Professional Summary section -->
+      <section class="cv-section" aria-labelledby="summary-heading">
+        <header class="cv-section-header">
+          <h2 id="summary-heading" class="cv-section-title">Acerca de</h2>
+        </header>
+        <div class="cv-section-body">
+          <p>
+           Soy un programador con pasión por la tecnología y el aprendizaje continuo.<br> Me esfuerzo por crecer profesionalmente,
+            aportando compromiso, proactividad y enfoque en la mejora constante, busco siempre soluciones eficientes que generen valor.
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills section -->
+      <section class="cv-section cv-grid-two" aria-labelledby="skills-heading">
+        <header class="cv-section-header">
+          <h2 id="skills-heading" class="cv-section-title">Herramientas</h2>
+        </header>
+        <div class="cv-section-body cv-columns">
+          <ul class="cv-list">
+            <li>Dominio de los principales lenguajes de programación para el desarrollo de software.</li>
+            <li>Experiencia con HTML, CSS, JavaScript</li>
+            <li>Conocimiento de lenguaje SQL</li>
+          </ul>
+          <ul class="cv-list">
+            <li>Creación de sitios web utilizando diferentes CMS como Wordpress y Wix.</li>
+            <li>Análisis de requerimientos y evaluaciones de necesidades del cliente</li>
+            <li>Github</li>
+           
+          </ul>
+        </div>
+      </section>
+
+      <!-- Work Experience section -->
+      <section class="cv-section" aria-labelledby="experience-heading">
+        <header class="cv-section-header">
+          <h2 id="experience-heading" class="cv-section-title">Experiencia laboral</h2>
+        </header>
+
+        <div class="cv-section-body cv-timeline">
+          <!-- Single experience item -->
+          <article class="cv-entry">
+            <header class="cv-entry-header">
+              <div>
+                <h3 class="cv-entry-title">SECTRA Visión</h3>
+                <p class="cv-entry-meta">Desarrollador web</p>
+              </div>
+              <div class="cv-entry-meta cv-entry-meta--right">
+                <span>Junio 2025 — Febrero 2026</span>
+                <span>Híbrido, CDMX</span>
+              </div>
+            </header>
+            <ul class="cv-entry-list">
+              <li>
+                Adminstrador de CRM y manejo de flujos automatizados para la captación de leads.
+              </li>
+              <li>
+                Creación de stios web, landing pages y colaboración de campañas publicitarias.
+              </li>
+            </ul>
+          </article>
+
+          <!-- Another experience item -->
+          <article class="cv-entry">
+            <header class="cv-entry-header">
+              <div>
+                <h3 class="cv-entry-title">COAL SOLUTIONS</h3>
+                <p class="cv-entry-meta">Desarrollador web</p>
+              </div>
+              <div class="cv-entry-meta cv-entry-meta--right">
+                <span>Junio 2024 — Marzo 2025</span>
+                <span>Híbrido, CDMX</span>
+              </div>
+            </header>
+            <ul class="cv-entry-list">
+              <li>
+                Apoyo técnico al ciclo completo de diversos proyectos, desde maquetación, desarrollo, programación.
+              </li>
+              <li>
+                Colabore activamente en la documentación de proyectos web, abarcando  desde la recopilación de requerimientos
+                 del cliente hasta la descripción del funcionamiento de la aplicación.
+              </li>
+              <li>
+                Diseño y creación de sitios web
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Education section -->
+      <section class="cv-section cv-grid-two" aria-labelledby="education-heading">
+        <header class="cv-section-header">
+          <h2 id="education-heading" class="cv-section-title">Educación</h2>
+        </header>
+        <div class="cv-section-body">
+          <article class="cv-entry cv-entry--compact">
+            <h3 class="cv-entry-title">Utel Universidad</h3>
+            <p class="cv-entry-meta">Licenciatura · Mayo 2020 — Mayo 2023</p>
+            <p class="cv-entry-note">Administración de Tecnologías de la información TI (titulado)</p>
+          </article>
+
+      </section>
+
+      <!-- Languages section -->
+      <section class="cv-section cv-grid-two" aria-labelledby="languages-heading">
+        <header class="cv-section-header">
+          <h2 id="languages-heading" class="cv-section-title">Idiomas</h2>
+        </header>
+        <div class="cv-section-body cv-columns cv-columns--balanced">
+          <ul class="cv-list">
+            <li>Inglés · B2</li>
+            <li>Español · Nativo</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Minimal JavaScript for theme toggling -->
+  <script>
+    // Toggle a data-theme attribute for light / dark mode
+    (function () {
+      const checkbox = document.getElementById('theme-toggle-input');
+      const root = document.documentElement;
+
+      if (!checkbox) return;
+
+      const applyTheme = (isDark) => {
+        root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      };
+
+      // Initialize theme (default to dark)
+      applyTheme(true);
+      checkbox.checked = true;
+
+      checkbox.addEventListener('change', function () {
+        applyTheme(checkbox.checked);
+      });
+    })();
+  </script>
+</body>
+
+</html>
+
